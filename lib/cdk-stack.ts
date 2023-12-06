@@ -10,7 +10,7 @@ import { Construct } from "constructs";
 import path = require("path");
 // import * as sqs from 'aws-cdk-lib/aws-sqs';
 
-export class CdkStack extends cdk.Stack {
+export class BackendStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
