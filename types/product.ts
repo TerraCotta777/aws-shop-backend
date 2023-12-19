@@ -1,4 +1,4 @@
-export type eventProduct = {
+export interface eventSpecificProduct {
     pathParameters: {
         productId: string;
     };

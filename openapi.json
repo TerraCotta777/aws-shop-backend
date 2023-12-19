@@ -1,87 +1,135 @@
 {
     "openapi": "3.0.0",
     "info": {
-      "title": "Product Service",
-      "description": "A service for managing products",
-      "version": "1.0.0"
+        "title": "Product Service",
+        "description": "A service for managing products",
+        "version": "1.0.0"
     },
     "servers": [
-      {
-        "url": "https://8ms4dllk7f.execute-api.ap-northeast-2.amazonaws.com/prod",
-        "description": "Production server"
-      }
+        {
+            "url": "https://8ms4dllk7f.execute-api.ap-northeast-2.amazonaws.com/prod",
+            "description": "Production server"
+        }
     ],
     "paths": {
-      "/products": {
-        "get": {
-          "summary": "Get all products",
-          "responses": {
-            "200": {
-              "description": "List of all products",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "type": "array",
-                    "items": {
-                      "type": "object",
-                      "properties": {
-                        "id": {
-                          "type": "string",
-                          "description": "Product id"
-                        },
-                        "name": {
-                          "type": "string",
-                          "description": "Product name"
+        "/products": {
+            "get": {
+                "summary": "Get all products",
+                "responses": {
+                    "200": {
+                        "description": "List of all products",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string",
+                                                "description": "Product id"
+                                            },
+                                            "count": {
+                                                "type": "number",
+                                                "description": "Amount of product available"
+                                            },
+                                            "title": {
+                                                "type": "string",
+                                                "description": "Product title"
+                                            },
+                                            "description": {
+                                                "type": "string",
+                                                "description": "Product description"
+                                            },
+                                            "price": {
+                                                "type": "number",
+                                                "description": "Product price"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }
-                      }
                     }
-                  }
                 }
-              }
-            }
-          }
-        }
-      },
-      "/products/{productId}": {
-        "get": {
-          "summary": "Get a product by its id",
-          "parameters": [
-            {
-              "name": "productId",
-              "in": "path",
-              "required": true,
-              "description": "Product id",
-              "schema": {
-                "type": "string"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Details about a specific product",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "type": "object",
-                    "properties": {
-                      "id": {
-                        "type": "string",
-                        "description": "Product id"
-                      },
-                      "name": {
-                        "type": "string",
-                        "description": "Product name"
-                      }
-                    }
-                  }
-                }
-              }
             },
-            "404": {
-              "description": "Product not found"
+            "post": {
+                "summary": "Create new product",
+                "responses": {
+                    "200": {
+                        "description": "Returns id of created product",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "type": "string",
+                                            "description": "Product id"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Request body is not valid"
+                    }
+                }
             }
-          }
+        },
+        "/products/{productId}": {
+            "get": {
+                "summary": "Get a product by its id",
+                "parameters": [
+                    {
+                        "name": "productId",
+                        "in": "path",
+                        "required": true,
+                        "description": "Product id",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Details about a specific product",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "type": "string",
+                                            "description": "Product id"
+                                        },
+                                        "count": {
+                                            "type": "number",
+                                            "description": "Amount of product available"
+                                        },
+                                        "title": {
+                                            "type": "string",
+                                            "description": "Product title"
+                                        },
+                                        "description": {
+                                            "type": "string",
+                                            "description": "Product description"
+                                        },
+                                        "price": {
+                                            "type": "number",
+                                            "description": "Product price"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Product not found"
+                    }
+                }
+            }
         }
-      }
     }
-  }
+}
