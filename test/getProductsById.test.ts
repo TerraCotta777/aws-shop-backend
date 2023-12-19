@@ -1,9 +1,10 @@
+import * as uuid from 'uuid';
 import {handler} from '../lambdas/getProductsById';
 
 test('getProductsById handler', async () => {
     const event = {
         pathParameters: {
-            productId: '1',
+            productId: uuid.NIL,
         }
     };
 
