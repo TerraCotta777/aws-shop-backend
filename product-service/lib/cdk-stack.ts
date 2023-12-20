@@ -1,19 +1,15 @@
 import * as cdk from "aws-cdk-lib";
 import { NodejsFunction } from "aws-cdk-lib/aws-lambda-nodejs";
 import {
-  Cors,
   LambdaIntegration,
-  LambdaRestApi,
   RestApi,
 } from "aws-cdk-lib/aws-apigateway";
 import { Construct } from "constructs";
 import path = require("path");
-import { AttributeType, Table, TableV2 } from "aws-cdk-lib/aws-dynamodb";
+import { Table } from "aws-cdk-lib/aws-dynamodb";
 import * as iam from "aws-cdk-lib/aws-iam";
-import { Product } from "aws-cdk-lib/aws-servicecatalog";
-// import * as sqs from 'aws-cdk-lib/aws-sqs';
 
-export class BackendStack extends cdk.Stack {
+export class Backend_Product_Stack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
     
@@ -97,10 +93,5 @@ export class BackendStack extends cdk.Stack {
     products.addMethod("POST", new LambdaIntegration(createProduct));
 
     specificProduct.addMethod("DELETE", new LambdaIntegration(deleteProduct));
-
-    // defaultCorsPreflightOptions: {
-    //   allowOrigins: Cors.ALL_ORIGINS, // Enables CORS
-    //   allowMethods: Cors.ALL_METHODS, // Allows all methods
-    // }
   }
 }
