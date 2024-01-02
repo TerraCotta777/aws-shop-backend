@@ -1,5 +1,5 @@
 import * as uuid from 'uuid';
-import {handler} from '../lambdas/getProductsById';
+import {handler} from '../../lambdas/getProductsById';
 
 test('getProductsById handler', async () => {
     const event = {

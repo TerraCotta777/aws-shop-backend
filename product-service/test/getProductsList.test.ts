@@ -1,5 +1,5 @@
 import * as AWS from "aws-sdk";
-import { handler } from "../lambdas/getProductsList";
+import { handler } from "../../lambdas/getProductsList";
 
 test("getProductsList handler", async () => {
   const { statusCode, body } = await handler();
